@@ -47,47 +47,83 @@ public class MaxArea {
         System.out.println("result = " + result);
     }
 
-    //遍历所有的值，求出最大的面积
-    //时间复杂度 O(n^2) 双重for循环
+//    //遍历所有的值，求出最大的面积
+//    //时间复杂度 O(n^2) 双重for循环
+//    private static int maxArea(int[] height) {
+//        int max = 0;
+//        for (int i = 0; i < height.length - 1; i++) {
+//            for (int j = i + 1; j < height.length; j++) {
+//                int area = (j - i) * Math.min(height[j], height[i]);
+//                max = Math.max(max, area);
+//            }
+//        }
+//        return max;
+//    }
+//
+//    //只有一个for循环，时间复杂度O(n)
+//    private static int maxArea1(int[] height) {
+//        int max = 0;
+//        for (int i = 0, j = height.length - 1; i < j; ) {
+//
+//            //左边的高
+//            int leftHeight = height[i];
+//            //右边的高
+//            int rightHeight = height[j];
+//
+//            //那边的高小则往那边移动一位
+//            if(leftHeight<rightHeight){
+//                i++;
+//            }else{
+//                j--;
+//            }
+//            //求出两个高中较小的minHeight
+//            int minHeight = Math.min(leftHeight,rightHeight);
+//            //计算面积
+//            int area = (j-i+1)*minHeight;
+//            //保留最大值
+//            max = Math.max(max,area);
+//
+//
+////            int minHeight = height[i] < height[j] ? height[i++] : height[j--];
+////            int area = (j - i + 1) * minHeight;
+////            max = Math.max(max, area);
+//        }
+//        return max;
+//    }
+
+
+    /**
+     * 2021-3-18 第二次练习 装最多水
+     * @param height
+     * @return
+     */
     private static int maxArea(int[] height) {
+        int count = 0;
         int max = 0;
         for (int i = 0; i < height.length - 1; i++) {
             for (int j = i + 1; j < height.length; j++) {
-                int area = (j - i) * Math.min(height[j], height[i]);
-                max = Math.max(max, area);
+                int minHeight = Math.min(height[i], height[j]);
+                int area = (j - i) * minHeight;
+                max = Math.max(area, max);
+                count++;
             }
         }
+        System.out.println("count = " + count);
         return max;
     }
 
-    //只有一个for循环，时间复杂度O(n)
     private static int maxArea1(int[] height) {
+        int count = 0;
         int max = 0;
         for (int i = 0, j = height.length - 1; i < j; ) {
-
-            //左边的高
-            int leftHeight = height[i];
-            //右边的高
-            int rightHeight = height[j];
-
-            //那边的高小则往那边移动一位
-            if(leftHeight<rightHeight){
-                i++;
-            }else{
-                j--;
-            }
-            //求出两个高中较小的minHeight
-            int minHeight = Math.min(leftHeight,rightHeight);
-            //计算面积
-            int area = (j-i+1)*minHeight;
-            //保留最大值
-            max = Math.max(max,area);
-
-
-//            int minHeight = height[i] < height[j] ? height[i++] : height[j--];
-//            int area = (j - i + 1) * minHeight;
-//            max = Math.max(max, area);
+            int minHeight = height[i] < height[j] ? height[i++] : height[j--];
+            int area = (j - i + 1) * minHeight;
+            max = Math.max(max, area);
+            count++;
         }
+        System.out.println("count = " + count);
         return max;
     }
+
+
 }
