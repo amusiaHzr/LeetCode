@@ -1,4 +1,4 @@
-package com.amusia.leetcodedemo;
+package com.amusia.leetcodedemo.demo1;
 
 /**
  * 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。

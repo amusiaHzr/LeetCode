@@ -1,4 +1,4 @@
-package com.amusia.leetcodedemo;
+package com.amusia.leetcodedemo.demo1;
 
 /**
  * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
@@ -95,6 +95,7 @@ public class ClimbStairs {
 
     /**
      * 2021-3-19 爬楼梯第二次练习
+     *
      * @param n
      * @return
      */

@@ -1,4 +1,4 @@
-package com.amusia.leetcodedemo;
+package com.amusia.leetcodedemo.demo1;
 
 import com.google.gson.Gson;
 
