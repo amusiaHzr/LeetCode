@@ -31,7 +31,7 @@ public class ClimbStairs {
 
     public static void main(String[] args) {
 
-        int result = climbStairs(5);
+        int result = climbStairs(6);
         System.out.println("result = " + result);
     }
 
@@ -76,18 +76,60 @@ public class ClimbStairs {
 
     /**
      * 时间复杂度 O(n),空间复杂度 O(1)
+     *
      * @param n
      * @return
      */
+//    private static int climbStairs(int n) {
+//        if (n < 3) return n;
+//        int first = 1;
+//        int second = 2;
+//        int third = 0;
+//        for (int i = 3; i <=n ; i++) { // i = 3                i=4
+//            third = first+second; // third = 1+2 = 3           third = 2+3 = 5
+//            first = second;  // first = 2                      first = 3
+//            second = third; // second = 3                      second = 5
+//        }
+//        return second;
+//    }
+
+    /**
+     * 2021-3-19 爬楼梯第二次练习
+     * @param n
+     * @return
+     */
+//    private static int  climbStairs(int n){
+//        if(n<3)return n;
+//        return climbStairs(n-1)+climbStairs(n-2);
+//    }
+
+
+//    private static int climbStairs(int n) {
+//        int memo[] = new int[n + 1];
+//        return climbStairsMemo(n, memo);
+//    }
+//
+//    private static int climbStairsMemo(int n, int[] memo) {
+//        if (memo[n] > 0) {
+//            return memo[n];
+//        } else if (n < 3) {
+//            memo[n] = n;
+//        } else {
+//            memo[n] = climbStairsMemo(n - 1, memo) + climbStairsMemo(n - 2, memo);
+//        }
+//        return memo[n];
+//    }
     private static int climbStairs(int n) {
-        if (n < 3) return n;
+        if (n < 3) {
+            return n;
+        }
         int first = 1;
         int second = 2;
-        int third = 0;
-        for (int i = 3; i <=n ; i++) { // i = 3                i=4
-            third = first+second; // third = 1+2 = 3           third = 2+3 = 5
-            first = second;  // first = 2                      first = 3
-            second = third; // second = 3                      second = 5
+        int third;
+        for (int i = 3; i <= n; i++) {
+            third = first + second;
+            first = second;
+            second = third;
         }
         return second;
     }

@@ -44,17 +44,36 @@ public class MoveZeroes {
     /**
      * 2021-3-18 移动零 第二次练习
      * */
+//    public static void moveZeroes(int[] nums){
+//        System.out.println("before"+new Gson().toJson(nums));
+//        int j = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            if(nums[i]!=0){
+//                nums[j] = nums[i];
+//                if(j!=i){
+//                    nums[i] = 0;
+//                }
+//                j++;
+//            }
+//        }
+//        System.out.println("after"+new Gson().toJson(nums));
+//    }
+
+    /**
+     * 2021-3-18 移动零 第三次练习
+     * */
     public static void moveZeroes(int[] nums){
         System.out.println("before"+new Gson().toJson(nums));
         int j = 0;
         for (int i = 0; i < nums.length; i++) {
             if(nums[i]!=0){
                 nums[j] = nums[i];
-                if(j!=i){
-                    nums[i] = 0;
-                }
                 j++;
             }
+        }
+
+        for (int i = j; i <nums.length ; i++) {
+            nums[i] = 0;
         }
         System.out.println("after"+new Gson().toJson(nums));
     }
