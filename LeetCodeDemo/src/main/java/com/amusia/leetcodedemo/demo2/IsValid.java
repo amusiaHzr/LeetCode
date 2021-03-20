@@ -46,9 +46,9 @@ import java.util.Stack;
  */
 public class IsValid {
     public static void main(String[] args) {
-//        String s = "()(){}{}[][]{}(){{";
-        String s = "([}}])";
-//        String s = "(((({{[{([({[]})]}]}}))))";
+//        String s = "()(){}{}[][]{}()";
+//        String s = "([}}])";
+        String s = "((({{[({{{[[[()]]]}}})]}})))";
         boolean result = isValid(s);
         PrintResult.print(result);
     }
@@ -77,24 +77,59 @@ public class IsValid {
      * @param s
      * @return
      */
+//    private static boolean isValid(String s) {
+//        if (s.length() % 2 != 0) {
+//            return false;
+//        }
+//        Stack<Character> stack = new Stack<>();
+//        char temp;
+//        for (int i = 0; i < s.length(); i++) {
+//            temp = s.charAt(i);
+//            if (temp == '(') {
+//                stack.push(')');
+//            } else if (temp == '[') {
+//                stack.push(']');
+//            } else if (temp == '{') {
+//                stack.push('}');
+//            } else if (stack.empty() ||  stack.pop()!=temp) {
+//                return false;
+//            }
+//        }
+//        return stack.empty();
+//    }
+
+    /******2021-3-20 第二次练习*******/
+//    private static boolean isValid(String s) {
+//        if (s.length() % 2 != 0) {
+//            return false;
+//        }
+//        while (s.contains("()") || s.contains("[]") || s.contains("{}")) {
+//            if (s.contains("()"))
+//                s = s.replace("()", "");
+//            if (s.contains("[]"))
+//                s = s.replace("[]", "");
+//            if (s.contains("{}"))
+//                s = s.replace("{}", "");
+//        }
+//        PrintResult.print("s = ", s);
+//        return s.length() == 0;
+//    }
     private static boolean isValid(String s) {
         if (s.length() % 2 != 0) {
             return false;
         }
         Stack<Character> stack = new Stack<>();
-        char temp;
         for (int i = 0; i < s.length(); i++) {
-            temp = s.charAt(i);
+            char temp = s.charAt(i);
             if (temp == '(') {
                 stack.push(')');
             } else if (temp == '[') {
                 stack.push(']');
             } else if (temp == '{') {
                 stack.push('}');
-            } else if (stack.empty() ||  stack.pop()!=temp) {
+            } else if (temp != stack.pop())
                 return false;
-            }
         }
-        return stack.empty();
+        return stack.isEmpty();
     }
 }
