@@ -46,7 +46,8 @@ import java.util.Stack;
  */
 public class IsValid {
     public static void main(String[] args) {
-        String s = "()(){}{}[][]{}(){{";
+//        String s = "()(){}{}[][]{}(){{";
+        String s = "([}}])";
 //        String s = "(((({{[{([({[]})]}]}}))))";
         boolean result = isValid(s);
         PrintResult.print(result);
@@ -88,13 +89,10 @@ public class IsValid {
                 stack.push(')');
             } else if (temp == '[') {
                 stack.push(']');
-            }
-            if (temp == '{') {
+            } else if (temp == '{') {
                 stack.push('}');
-            }
-            Character peek = stack.peek();
-            if (temp == peek) {
-                stack.pop();
+            } else if (stack.empty() ||  stack.pop()!=temp) {
+                return false;
             }
         }
         return stack.empty();
