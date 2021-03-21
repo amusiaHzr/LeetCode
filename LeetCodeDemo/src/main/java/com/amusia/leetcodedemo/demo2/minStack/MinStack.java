@@ -1,4 +1,4 @@
-package com.amusia.leetcodedemo.demo2;
+package com.amusia.leetcodedemo.demo2.minStack;
 
 import com.amusia.leetcodedemo.PrintResult;
 
