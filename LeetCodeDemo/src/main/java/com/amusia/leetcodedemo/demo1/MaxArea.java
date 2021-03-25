@@ -97,31 +97,69 @@ public class MaxArea {
      * @param height
      * @return
      */
+//    private static int maxArea(int[] height) {
+//        int count = 0;
+//        int max = 0;
+//        for (int i = 0; i < height.length - 1; i++) {
+//            for (int j = i + 1; j < height.length; j++) {
+//                int minHeight = Math.min(height[i], height[j]);
+//                int area = (j - i) * minHeight;
+//                max = Math.max(area, max);
+//                count++;
+//            }
+//        }
+//        System.out.println("count = " + count);
+//        return max;
+//    }
+//
+//    private static int maxArea1(int[] height) {
+//        int count = 0;
+//        int max = 0;
+//        for (int i = 0, j = height.length - 1; i < j; ) {
+//            int minHeight = height[i] < height[j] ? height[i++] : height[j--];
+//            int area = (j - i + 1) * minHeight;
+//            max = Math.max(max, area);
+//            count++;
+//        }
+//        System.out.println("count = " + count);
+//        return max;
+//    }
+
+
+    /**
+     * 2021-3-25 第三次练习 装最多水
+     *
+     * @param height
+     * @return
+     */
     private static int maxArea(int[] height) {
-        int count = 0;
         int max = 0;
         for (int i = 0; i < height.length - 1; i++) {
             for (int j = i + 1; j < height.length; j++) {
                 int minHeight = Math.min(height[i], height[j]);
                 int area = (j - i) * minHeight;
-                max = Math.max(area, max);
-                count++;
+                max = Math.max(max, area);
             }
         }
-        System.out.println("count = " + count);
         return max;
     }
 
     private static int maxArea1(int[] height) {
-        int count = 0;
         int max = 0;
-        for (int i = 0, j = height.length - 1; i < j; ) {
-            int minHeight = height[i] < height[j] ? height[i++] : height[j--];
-            int area = (j - i + 1) * minHeight;
-            max = Math.max(max, area);
-            count++;
+        for (int i = 0, j = height.length-1; i < j; ) {
+                int left = height[i];
+                int right = height[j];
+                int min = Math.min(left,right);
+                if(left<right){
+                    i++;
+                }else{
+                    j--;
+                }
+
+                int area = (j-i+1)*min;
+                max = Math.max(max,area);
+
         }
-        System.out.println("count = " + count);
         return max;
     }
 

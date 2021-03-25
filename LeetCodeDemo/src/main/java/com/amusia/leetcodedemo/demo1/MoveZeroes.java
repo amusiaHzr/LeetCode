@@ -1,5 +1,6 @@
 package com.amusia.leetcodedemo.demo1;
 
+import com.amusia.leetcodedemo.PrintResult;
 import com.google.gson.Gson;
 
 /**
@@ -62,19 +63,39 @@ public class MoveZeroes {
     /**
      * 2021-3-18 移动零 第三次练习
      * */
+//    public static void moveZeroes(int[] nums){
+//        System.out.println("before"+new Gson().toJson(nums));
+//        int j = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            if(nums[i]!=0){
+//                nums[j] = nums[i];
+//                j++;
+//            }
+//        }
+//
+//        for (int i = j; i <nums.length ; i++) {
+//            nums[i] = 0;
+//        }
+//        System.out.println("after"+new Gson().toJson(nums));
+//    }
+
+
+    /**
+     * 2021-3-25 第四次练习
+     * @param nums
+     */
     public static void moveZeroes(int[] nums){
-        System.out.println("before"+new Gson().toJson(nums));
+        PrintResult.print("before",nums);
         int j = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if(nums[i]!=0){
+        for (int i = 0; i <nums.length ; i++) {
+            if (nums[i]!=0) {
                 nums[j] = nums[i];
+                if(j!=i){
+                    nums[i] = 0;
+                }
                 j++;
             }
         }
-
-        for (int i = j; i <nums.length ; i++) {
-            nums[i] = 0;
-        }
-        System.out.println("after"+new Gson().toJson(nums));
+        PrintResult.print("after",nums);
     }
 }
